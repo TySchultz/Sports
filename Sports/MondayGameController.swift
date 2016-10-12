@@ -28,15 +28,8 @@ class MondayGameController: IGListSectionController, IGListSectionType {
     }
 
     func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeueReusableCell(of: SundayGameCell.self, for: self, at: index) as! SundayGameCell
-        cell.homeTeamImage.image = UIImage(named: object!.homeTeam)
-        cell.awayTeamImage.image = UIImage(named: object!.awayTeam)
-        cell.homeTeamName.text = object?.homeTeam
-        cell.awayTeamName.text = object?.awayTeam
-        cell.homeTeamScore.text = "23"
-        cell.awayTeamScore.text = "43"
-        cell.timeLabel.text = "Final"
-        
+        let cell = collectionContext!.dequeueReusableCell(of: SettingsCell.self, for: self, at: index) as! SettingsCell
+        cell.contentLabel.text = "Settings"
         return cell
     }
 

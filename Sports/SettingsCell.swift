@@ -1,5 +1,5 @@
 //
-//  ScoreBoardCell.swift
+//  SettingsCell.swift
 //  Sports
 //
 //  Created by Tyler J Schultz on 10/12/16.
@@ -8,10 +8,10 @@
 
 import UIKit
 import SnapKit
-class ScoreBoardCell: UICollectionViewCell {
-    
+
+class SettingsCell: UICollectionViewCell {
     fileprivate static let insets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-    fileprivate static let font = UIFont.systemFont(ofSize: 17)
+    fileprivate static let font = UIFont.systemFont(ofSize: 22, weight: 13)
     fileprivate static let scoreFont = UIFont.boldSystemFont(ofSize: 22)
     fileprivate static let timeFont = UIFont.systemFont(ofSize: 13)
     
@@ -31,29 +31,33 @@ class ScoreBoardCell: UICollectionViewCell {
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.numberOfLines = 1
-        label.font = ScoreBoardCell.font
+        label.font = SettingsCell.font
         return label
     }
     
+    func createImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.clear
+        imageView.image = UIImage(named: "Carolina")
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 8.0
+        return imageView
+    }
+    
     // UI Objects
-    lazy var placeLabel: UILabel = {
-        let placeLabel = self.createLabel()
-        self.contentView.addSubview(placeLabel)
-        return placeLabel
+    lazy var contentLabel: UILabel = {
+        let contentLabel = self.createLabel()
+        self.contentView.addSubview(contentLabel)
+        return contentLabel
     }()
     
-    lazy var nameLabel: UILabel = {
-        let nameLabel = self.createLabel()
-        self.contentView.addSubview(nameLabel)
-        return nameLabel
+    lazy var cellImage: UIImageView = {
+        let cellImage = self.createImageView()
+        self.contentView.addSubview(cellImage)
+        return cellImage
     }()
-    
-    lazy var scoreLabel: UILabel = {
-        let scoreLabel = self.createLabel()
-        self.contentView.addSubview(scoreLabel)
-        return scoreLabel
-    }()
-    
+   
     lazy var separator: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor(red: 200/255.0, green: 199/255.0, blue: 204/255.0, alpha: 1).cgColor
@@ -66,28 +70,23 @@ class ScoreBoardCell: UICollectionViewCell {
         let bounds = contentView.bounds
         
         let height: CGFloat = 0.5
-        let left = ScoreBoardCell.insets.left
+        let left = SettingsCell.insets.left
         separator.frame = CGRect(x: left, y: bounds.height - height, width: bounds.width - left, height: height)
         
         
-        placeLabel.snp.makeConstraints { (make) in
+        let edgeOffset = 16
+        
+        contentLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(self.snp.centerY)
-            make.left.equalTo(self).offset(16)
+            make.left.equalTo(self).offset(edgeOffset)
         }
         
-        
-        nameLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.snp.centerY)
-            make.left.equalTo(placeLabel.snp.right).offset(16)
+        cellImage.snp.makeConstraints { (make) in
+            make.top.equalTo(self).offset(8)
+            make.right.equalTo(self).offset(-edgeOffset)
+            make.bottom.equalTo(self.snp.bottom).offset(-8)
+            make.width.equalTo(self.snp.height).offset(-16)
         }
-        
-        
-        scoreLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.snp.centerY)
-            make.right.equalTo(self).offset(-16)
-        }
-        
-        
     }
     
     override var isHighlighted: Bool {
