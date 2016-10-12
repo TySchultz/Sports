@@ -15,6 +15,16 @@
 import UIKit
 import IGListKit
 
+class Monday: NSObject {
+    var homeTeam : String
+    var awayTeam : String
+    
+    init(homeTeam : String, awayTeam : String){
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+    }
+}
+
 class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIScrollViewDelegate {
 
     lazy var adapter: IGListAdapter = {
@@ -22,12 +32,17 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
     }()
     let collectionView = IGListCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
 
-    lazy var words : [Game] = []
+    lazy var words : [Any] = []
     var loading = false
     let spinToken = NSObject()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let e = Monday(homeTeam: "adf", awayTeam: "asdf")
+        words = []
+        words.append(spinToken)
         
         let g = Game()
         g.homeTeam = "Arizona"
@@ -46,6 +61,10 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
             g.homeTeam = randomTeam(index: rand)
             g.awayTeam = randomTeam(index: rand2)
             words.append(g)
+            
+            if index == 5 || index == 14 {
+                words.append(spinToken)
+            }
         }
         
         view.addSubview(collectionView)
@@ -62,7 +81,7 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
     //MARK: IGListAdapterDataSource
 
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-        var items: [IGListDiffable] = words as [IGListDiffable]
+        var items: [IGListDiffable] = words as! [IGListDiffable]
         if loading {
             items.append(spinToken)
         }
@@ -71,9 +90,9 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
 
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
         if let obj = object as? NSObject, obj === spinToken {
-            return spinnerSectionController()
-        } else {
             return MondayGameController()
+        } else {
+            return SundayGameController()
         }
     }
 
