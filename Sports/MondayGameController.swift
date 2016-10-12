@@ -24,18 +24,19 @@ class MondayGameController: IGListSectionController, IGListSectionType {
     }
 
     func sizeForItem(at index: Int) -> CGSize {
-        return CGSize(width: collectionContext!.containerSize.width, height: 270)
+        return CGSize(width: collectionContext!.containerSize.width, height: 80)
     }
 
     func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeueReusableCell(of: MondayGameCell.self, for: self, at: index) as! MondayGameCell
+        let cell = collectionContext!.dequeueReusableCell(of: SundayGameCell.self, for: self, at: index) as! SundayGameCell
         cell.homeTeamImage.image = UIImage(named: object!.homeTeam)
         cell.awayTeamImage.image = UIImage(named: object!.awayTeam)
         cell.homeTeamName.text = object?.homeTeam
         cell.awayTeamName.text = object?.awayTeam
         cell.homeTeamScore.text = "23"
         cell.awayTeamScore.text = "43"
-        cell.timeLabel.text = "4:30 pm"
+        cell.timeLabel.text = "Final"
+        
         return cell
     }
 
