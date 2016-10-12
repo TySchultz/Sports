@@ -42,6 +42,7 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
         
         self.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         navigationController?.setNavigationBarHidden(false, animated: false)
+        words = []
 
         createData()
         
@@ -60,12 +61,11 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
     }
     
     func createData() {
-        words = []
         //Add header
         words.append(PageHeader(title: "Games" ))
         //Add
         words.append(Monday(homeTeam: "Cleveland", awayTeam: "Pittsburg"))
-        words.append(PageHeader(title: "Thursday"))
+        words.append(SectionHeader(title: "Thursday"))
         for index in 1...15 {
             let rand = Int(arc4random_uniform(19))
             let rand2 = Int(arc4random_uniform(19))
@@ -75,7 +75,7 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
             g.awayTeam = randomTeam(index: rand2)
             words.append(g)
         }
-        words.append(PageHeader(title: "Thursday"))
+        words.append(SectionHeader(title: "Thursday"))
         words.append(Monday(homeTeam: "Cleveland", awayTeam: "Pittsburg"))
 
     }
@@ -92,12 +92,16 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
 
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
         
-        if let _ = object as? PageHeader {
+        if let obj = object as? NSObject, obj === spinToken {
+            return spinnerSectionController()
+        }else if let _ = object as? PageHeader {
             return PageHeaderController()
         }else if let _ = object as? Monday {
             return MondayGameController()
         } else if let _ = object as? GridItem {
             return GridSectionController()
+        } else if let _ = object as? SectionHeader {
+            return SectionHeaderController()
         } else {
             return SundayGameController()
         }
@@ -107,22 +111,22 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
 
 //    //MARK: UIScrollViewDelegate
 //
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
-//        if !loading && distance < 200 {
-//            loading = true
-//            adapter.performUpdates(animated: true, completion: nil)
-//            DispatchQueue.global(qos: .default).async(execute: {
-//                // fake background loading task
-//                sleep(2)
-//                DispatchQueue.main.async {
-//                    self.loading = false
-////                    self.words.append(contentsOf: "Etiam porta sem malesuada magna mollis euismod".components(separatedBy: " "))
-//                    self.adapter.performUpdates(animated: true, completion: nil)
-//                }
-//            })
-//        }
-//    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
+        if !loading && distance < 200 {
+            loading = true
+            adapter.performUpdates(animated: true, completion: nil)
+            DispatchQueue.global(qos: .default).async(execute: {
+                // fake background loading task
+                sleep(2)
+                DispatchQueue.main.async {
+                    self.loading = false
+                    self.createData()
+                    self.adapter.performUpdates(animated: true, completion: nil)
+                }
+            })
+        }
+    }
 
     func randomTeam(index : Int) -> String {
         

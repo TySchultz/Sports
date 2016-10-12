@@ -23,6 +23,9 @@
 		5C29BBD51DAE8E61000B4090 /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBD41DAE8E61000B4090 /* GridSectionController.swift */; };
 		5C29BBD71DAE8E7F000B4090 /* CenterLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBD61DAE8E7F000B4090 /* CenterLabelCell.swift */; };
 		5C29BBDC1DAEA82F000B4090 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBDB1DAEA82F000B4090 /* TeamListViewController.swift */; };
+		5C29BBDE1DAEB323000B4090 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBDD1DAEB323000B4090 /* SettingsViewController.swift */; };
+		5C29BBE01DAEB355000B4090 /* SettingsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBDF1DAEB355000B4090 /* SettingsSectionController.swift */; };
+		5C29BBE21DAEB540000B4090 /* SectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBE11DAEB540000B4090 /* SectionHeaderCell.swift */; };
 		5CB03E7C1DAE743C0079A944 /* SundayGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB03E7B1DAE743C0079A944 /* SundayGameCell.swift */; };
 		5CB03E7E1DAE789E0079A944 /* ScoreBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB03E7D1DAE789E0079A944 /* ScoreBoardCell.swift */; };
 		5CB03E801DAE7B000079A944 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB03E7F1DAE7B000079A944 /* SettingsCell.swift */; };
@@ -69,6 +72,9 @@
 		5C29BBD41DAE8E61000B4090 /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
 		5C29BBD61DAE8E7F000B4090 /* CenterLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterLabelCell.swift; sourceTree = "<group>"; };
 		5C29BBDB1DAEA82F000B4090 /* TeamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
+		5C29BBDD1DAEB323000B4090 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5C29BBDF1DAEB355000B4090 /* SettingsSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionController.swift; sourceTree = "<group>"; };
+		5C29BBE11DAEB540000B4090 /* SectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderCell.swift; sourceTree = "<group>"; };
 		5CB03E7B1DAE743C0079A944 /* SundayGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SundayGameCell.swift; sourceTree = "<group>"; };
 		5CB03E7D1DAE789E0079A944 /* ScoreBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBoardCell.swift; sourceTree = "<group>"; };
 		5CB03E7F1DAE7B000079A944 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 			children = (
 				10B91A341DADB3B40047D5DA /* MainScheduleViewController.swift */,
 				5C29BBDB1DAEA82F000B4090 /* TeamListViewController.swift */,
+				5C29BBDD1DAEB323000B4090 /* SettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -174,6 +181,7 @@
 				5C29BBD41DAE8E61000B4090 /* GridSectionController.swift */,
 				10B91A361DADB3BF0047D5DA /* MondayGameController.swift */,
 				5CB03E811DAE7EC70079A944 /* SundayGameController.swift */,
+				5C29BBDF1DAEB355000B4090 /* SettingsSectionController.swift */,
 			);
 			name = SectionControllers;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				5C29BBD61DAE8E7F000B4090 /* CenterLabelCell.swift */,
 				5C29BBCE1DAE886D000B4090 /* PageHeaderCell.swift */,
 				10B91A3A1DADB4020047D5DA /* SpinnerCell.swift */,
+				5C29BBE11DAEB540000B4090 /* SectionHeaderCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -401,13 +410,16 @@
 				10B91A3F1DADB6B70047D5DA /* Game.swift in Sources */,
 				5CB03E7E1DAE789E0079A944 /* ScoreBoardCell.swift in Sources */,
 				5CB03E801DAE7B000079A944 /* SettingsCell.swift in Sources */,
+				5C29BBDE1DAEB323000B4090 /* SettingsViewController.swift in Sources */,
 				10B91A071DADB1B80047D5DA /* ViewController.swift in Sources */,
 				5C29BBDC1DAEA82F000B4090 /* TeamListViewController.swift in Sources */,
 				10B91A3B1DADB4020047D5DA /* SpinnerCell.swift in Sources */,
 				5C29BBD51DAE8E61000B4090 /* GridSectionController.swift in Sources */,
+				5C29BBE21DAEB540000B4090 /* SectionHeaderCell.swift in Sources */,
 				5CB03E7C1DAE743C0079A944 /* SundayGameCell.swift in Sources */,
 				10B91A391DADB3C30047D5DA /* MondayGameCell.swift in Sources */,
 				5CB03E821DAE7EC70079A944 /* SundayGameController.swift in Sources */,
+				5C29BBE01DAEB355000B4090 /* SettingsSectionController.swift in Sources */,
 				10B91A051DADB1B80047D5DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

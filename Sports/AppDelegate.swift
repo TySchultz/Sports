@@ -13,10 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let tab = UITabBarController()
-        tab.setViewControllers([TeamListViewController(),TeamListViewController(),MainScheduleViewController(),MainScheduleViewController()], animated: true)
+        tab.setViewControllers([MainScheduleViewController(),TeamListViewController(),MainScheduleViewController(),SettingsViewController()], animated: true)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: tab)
