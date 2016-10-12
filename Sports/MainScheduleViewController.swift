@@ -42,6 +42,7 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
         
         let e = Monday(homeTeam: "adf", awayTeam: "asdf")
         words = []
+        words.append("Title")
         words.append(spinToken)
         
         let g = Game()
@@ -89,7 +90,10 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
     }
 
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
-        if let obj = object as? NSObject, obj === spinToken {
+        
+        if let obj = object as? String {
+            return PageHeaderController()
+        }else if let obj = object as? NSObject, obj === spinToken {
             return MondayGameController()
         } else {
             return SundayGameController()
