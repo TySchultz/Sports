@@ -43,6 +43,8 @@ class MondayGameController: IGListSectionController, IGListSectionType {
         self.object = object as? Monday
     }
 
-    func didSelectItem(at index: Int) {}
+    func didSelectItem(at index: Int) {
+
+    }
 
 }

@@ -20,6 +20,9 @@
 		10B91A3F1DADB6B70047D5DA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B91A3E1DADB6B70047D5DA /* Game.swift */; };
 		49D94CAA1CE339F596A4DB92 /* Pods_Sports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64620385B990621D6F835D0C /* Pods_Sports.framework */; };
 		5C29BBCF1DAE886D000B4090 /* PageHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBCE1DAE886D000B4090 /* PageHeaderCell.swift */; };
+		5C29BBD51DAE8E61000B4090 /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBD41DAE8E61000B4090 /* GridSectionController.swift */; };
+		5C29BBD71DAE8E7F000B4090 /* CenterLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBD61DAE8E7F000B4090 /* CenterLabelCell.swift */; };
+		5C29BBDC1DAEA82F000B4090 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29BBDB1DAEA82F000B4090 /* TeamListViewController.swift */; };
 		5CB03E7C1DAE743C0079A944 /* SundayGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB03E7B1DAE743C0079A944 /* SundayGameCell.swift */; };
 		5CB03E7E1DAE789E0079A944 /* ScoreBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB03E7D1DAE789E0079A944 /* ScoreBoardCell.swift */; };
 		5CB03E801DAE7B000079A944 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB03E7F1DAE7B000079A944 /* SettingsCell.swift */; };
@@ -63,6 +66,9 @@
 		10B91A3E1DADB6B70047D5DA /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		59BD6D60375728E31B01ACF2 /* Pods-Sports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sports/Pods-Sports.debug.xcconfig"; sourceTree = "<group>"; };
 		5C29BBCE1DAE886D000B4090 /* PageHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageHeaderCell.swift; sourceTree = "<group>"; };
+		5C29BBD41DAE8E61000B4090 /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
+		5C29BBD61DAE8E7F000B4090 /* CenterLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterLabelCell.swift; sourceTree = "<group>"; };
+		5C29BBDB1DAEA82F000B4090 /* TeamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		5CB03E7B1DAE743C0079A944 /* SundayGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SundayGameCell.swift; sourceTree = "<group>"; };
 		5CB03E7D1DAE789E0079A944 /* ScoreBoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBoardCell.swift; sourceTree = "<group>"; };
 		5CB03E7F1DAE7B000079A944 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
@@ -124,15 +130,9 @@
 			children = (
 				10B91A041DADB1B80047D5DA /* AppDelegate.swift */,
 				10B91A061DADB1B80047D5DA /* ViewController.swift */,
-				10B91A341DADB3B40047D5DA /* MainScheduleViewController.swift */,
-				10B91A361DADB3BF0047D5DA /* MondayGameController.swift */,
-				5CB03E811DAE7EC70079A944 /* SundayGameController.swift */,
-				10B91A381DADB3C30047D5DA /* MondayGameCell.swift */,
-				5CB03E7B1DAE743C0079A944 /* SundayGameCell.swift */,
-				5CB03E7D1DAE789E0079A944 /* ScoreBoardCell.swift */,
-				5CB03E7F1DAE7B000079A944 /* SettingsCell.swift */,
-				5C29BBCE1DAE886D000B4090 /* PageHeaderCell.swift */,
-				10B91A3A1DADB4020047D5DA /* SpinnerCell.swift */,
+				5C29BBD81DAEA6E1000B4090 /* ViewControllers */,
+				5C29BBD91DAEA6F0000B4090 /* SectionControllers */,
+				5C29BBDA1DAEA6F8000B4090 /* Cells */,
 				10B91A3E1DADB6B70047D5DA /* Game.swift */,
 				10B91A0B1DADB1B80047D5DA /* Assets.xcassets */,
 				10B91A0D1DADB1B80047D5DA /* LaunchScreen.storyboard */,
@@ -157,6 +157,39 @@
 				10B91A261DADB1B80047D5DA /* Info.plist */,
 			);
 			path = SportsUITests;
+			sourceTree = "<group>";
+		};
+		5C29BBD81DAEA6E1000B4090 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				10B91A341DADB3B40047D5DA /* MainScheduleViewController.swift */,
+				5C29BBDB1DAEA82F000B4090 /* TeamListViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5C29BBD91DAEA6F0000B4090 /* SectionControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C29BBD41DAE8E61000B4090 /* GridSectionController.swift */,
+				10B91A361DADB3BF0047D5DA /* MondayGameController.swift */,
+				5CB03E811DAE7EC70079A944 /* SundayGameController.swift */,
+			);
+			name = SectionControllers;
+			sourceTree = "<group>";
+		};
+		5C29BBDA1DAEA6F8000B4090 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				10B91A381DADB3C30047D5DA /* MondayGameCell.swift */,
+				5CB03E7B1DAE743C0079A944 /* SundayGameCell.swift */,
+				5CB03E7D1DAE789E0079A944 /* ScoreBoardCell.swift */,
+				5CB03E7F1DAE7B000079A944 /* SettingsCell.swift */,
+				5C29BBD61DAE8E7F000B4090 /* CenterLabelCell.swift */,
+				5C29BBCE1DAE886D000B4090 /* PageHeaderCell.swift */,
+				10B91A3A1DADB4020047D5DA /* SpinnerCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		7E25A8D5C22A91BF0C435E2D /* Frameworks */ = {
@@ -362,13 +395,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				10B91A371DADB3BF0047D5DA /* MondayGameController.swift in Sources */,
+				5C29BBD71DAE8E7F000B4090 /* CenterLabelCell.swift in Sources */,
 				5C29BBCF1DAE886D000B4090 /* PageHeaderCell.swift in Sources */,
 				10B91A351DADB3B40047D5DA /* MainScheduleViewController.swift in Sources */,
 				10B91A3F1DADB6B70047D5DA /* Game.swift in Sources */,
 				5CB03E7E1DAE789E0079A944 /* ScoreBoardCell.swift in Sources */,
 				5CB03E801DAE7B000079A944 /* SettingsCell.swift in Sources */,
 				10B91A071DADB1B80047D5DA /* ViewController.swift in Sources */,
+				5C29BBDC1DAEA82F000B4090 /* TeamListViewController.swift in Sources */,
 				10B91A3B1DADB4020047D5DA /* SpinnerCell.swift in Sources */,
+				5C29BBD51DAE8E61000B4090 /* GridSectionController.swift in Sources */,
 				5CB03E7C1DAE743C0079A944 /* SundayGameCell.swift in Sources */,
 				10B91A391DADB3C30047D5DA /* MondayGameCell.swift in Sources */,
 				5CB03E821DAE7EC70079A944 /* SundayGameController.swift in Sources */,

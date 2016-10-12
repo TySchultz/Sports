@@ -9,6 +9,16 @@
 import UIKit
 import IGListKit
 
+class PageHeader: NSObject {
+    
+    let title: String
+    
+    init(title : String ) {
+        self.title = title
+    }
+}
+
+
 class PageHeaderController : IGListSectionController, IGListSectionType {
     var object: String?
     
@@ -59,7 +69,7 @@ class PageHeaderCell: UICollectionViewCell {
    
     lazy var separator: CALayer = {
         let layer = CALayer()
-        layer.backgroundColor = UIColor(red: 200/255.0, green: 199/255.0, blue: 204/255.0, alpha: 1).cgColor
+        layer.backgroundColor = UIColor.black.cgColor
         self.contentView.layer.addSublayer(layer)
         return layer
     }()
@@ -70,7 +80,7 @@ class PageHeaderCell: UICollectionViewCell {
         
         let height: CGFloat = 2
         let left = PageHeaderCell.insets.left
-        separator.frame = CGRect(x: 0, y: bounds.height - height, width: bounds.width - left, height: height)
+        separator.frame = CGRect(x: 0, y: bounds.height - height, width: bounds.width, height: height)
         
         headerLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self).offset(8)

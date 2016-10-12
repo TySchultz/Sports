@@ -35,48 +35,49 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
     lazy var words : [Any] = []
     var loading = false
     let spinToken = NSObject()
+    let gridItem = NSObject()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let e = Monday(homeTeam: "adf", awayTeam: "asdf")
-        words = []
-        words.append("Title")
-        words.append(spinToken)
-        
-        let g = Game()
-        g.homeTeam = "Arizona"
-        g.awayTeam = "Carolina"
-    
-        let g2 = Game()
-        g2.homeTeam = "Cleveland"
-        g2.awayTeam = "Houston"
-        
-        for index in 1...19 {
-            
-            let rand = Int(arc4random_uniform(19))
-            let rand2 = Int(arc4random_uniform(19))
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        navigationController?.setNavigationBarHidden(false, animated: false)
 
-            let g = Game()
-            g.homeTeam = randomTeam(index: rand)
-            g.awayTeam = randomTeam(index: rand2)
-            words.append(g)
-            
-            if index == 5 || index == 14 {
-                words.append(spinToken)
-            }
-        }
+        createData()
+        
         
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         adapter.dataSource = self
         adapter.scrollViewDelegate = self
+        //        words.append(GridItem(color: UIColor(red: 237/255.0, green: 73/255.0, blue: 86/255.0, alpha: 1), itemCount: 16))
+
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
+    }
+    
+    func createData() {
+        words = []
+        //Add header
+        words.append(PageHeader(title: "Games" ))
+        //Add
+        words.append(Monday(homeTeam: "Cleveland", awayTeam: "Pittsburg"))
+        words.append(PageHeader(title: "Thursday"))
+        for index in 1...15 {
+            let rand = Int(arc4random_uniform(19))
+            let rand2 = Int(arc4random_uniform(19))
+            
+            let g = Game()
+            g.homeTeam = randomTeam(index: rand)
+            g.awayTeam = randomTeam(index: rand2)
+            words.append(g)
+        }
+        words.append(PageHeader(title: "Thursday"))
+        words.append(Monday(homeTeam: "Cleveland", awayTeam: "Pittsburg"))
+
     }
 
     //MARK: IGListAdapterDataSource
@@ -91,10 +92,12 @@ class MainScheduleViewController: UIViewController, IGListAdapterDataSource, UIS
 
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
         
-        if let obj = object as? String {
+        if let _ = object as? PageHeader {
             return PageHeaderController()
-        }else if let obj = object as? NSObject, obj === spinToken {
+        }else if let _ = object as? Monday {
             return MondayGameController()
+        } else if let _ = object as? GridItem {
+            return GridSectionController()
         } else {
             return SundayGameController()
         }
